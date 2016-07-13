@@ -1,4 +1,4 @@
-package parisilabs.com.backgroundintentservice;
+package com.parisilabs.backgroundintentservice;
 
 import android.app.Application;
 import java.net.CookieHandler;

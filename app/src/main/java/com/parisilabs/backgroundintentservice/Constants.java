@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package parisilabs.com.backgroundintentservice;
+package com.parisilabs.backgroundintentservice;
 
 import java.util.Locale;
 
@@ -27,47 +27,21 @@ public final class Constants {
     public static final String TAG = "PRSLB";
 
     // Set to true to turn on verbose logging
-    public static final boolean LOGV = false;
+    public static final boolean LOGV = true;
     
     // Set to true to turn on debug logging
     public static final boolean LOGD = true;
 
     // Custom actions
 
-    public static final String ACTION_VIEW_IMAGE =
-            "com.example.android.threadsample.ACTION_VIEW_IMAGE";
-
-    public static final String ACTION_ZOOM_IMAGE =
-            "com.example.android.threadsample.ACTION_ZOOM_IMAGE";
-
     // Defines a custom Intent action
-    public static final String BROADCAST_ACTION = "com.example.android.threadsample.BROADCAST";
-
-    // Fragment tags
-    public static final String PHOTO_FRAGMENT_TAG =
-            "com.example.android.threadsample.PHOTO_FRAGMENT_TAG";
-
-    public static final String THUMBNAIL_FRAGMENT_TAG =
-            "com.example.android.threadsample.THUMBNAIL_FRAGMENT_TAG";
+    public static final String BROADCAST_ACTION = "com.parisilabs.backgroundintentservice.BROADCAST";
 
     // Defines the key for the status "extra" in an Intent
-    public static final String EXTENDED_DATA_STATUS = "com.example.android.threadsample.STATUS";
+    public static final String EXTENDED_DATA_STATUS = "com.parisilabs.backgroundintentservice.STATUS";
 
     // Defines the key for the log "extra" in an Intent
-    public static final String EXTENDED_STATUS_LOG = "com.example.android.threadsample.LOG";
-
-    // Defines the key for storing fullscreen state
-    public static final String EXTENDED_FULLSCREEN =
-            "com.example.android.threadsample.EXTENDED_FULLSCREEN";
-
-    /*
-     * A user-agent string that's sent to the HTTP site. It includes information about the device
-     * and the build that the device is running.
-     */
-    public static final String USER_AGENT = "Mozilla/5.0 (Linux; U; Android "
-            + android.os.Build.VERSION.RELEASE + ";"
-            + Locale.getDefault().toString() + "; " + android.os.Build.DEVICE
-            + "/" + android.os.Build.ID + ")";
+    public static final String EXTENDED_STATUS_LOG = "com.parisilabs.backgroundintentservice.LOG";
 
     // Status values to broadcast to the Activity
 

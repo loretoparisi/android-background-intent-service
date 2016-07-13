@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package parisilabs.com.backgroundintentservice;
+package com.parisilabs.backgroundintentservice;
 
 import android.app.IntentService;
 import android.content.Context;
@@ -81,6 +81,8 @@ public class BackgroundIntentService extends IntentService {
 
         // Reports that the feed retrieval is complete.
         mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_COMPLETE);
+
+        Log.d(Constants.TAG, "handling completed");
 
     }
 

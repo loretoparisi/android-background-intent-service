@@ -1,12 +1,14 @@
-package parisilabs.com.backgroundintentservice;
+package com.parisilabs.backgroundintentservice;
 
 import android.content.Intent;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -18,6 +20,8 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
+    // An instance of the status broadcast receiver
+    BackgroundIntentBroadcastReceiver mBackgroundIntentReceiver;
 
     private MainActivity instance;
 
@@ -27,6 +31,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // The filter's action is BROADCAST_ACTION
+        IntentFilter statusIntentFilter = new IntentFilter(
+                Constants.BROADCAST_ACTION);
+        // Sets the filter's category to DEFAULT
+        statusIntentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+
+        // Instantiates a new BackgroundIntentBroadcastReceiver
+        mBackgroundIntentReceiver = new BackgroundIntentBroadcastReceiver();
+        // Registers the BackgroundIntentBroadcastReceiver and its intent filters
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+                mBackgroundIntentReceiver,
+                statusIntentFilter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
@@ -62,6 +79,22 @@ public class MainActivity extends AppCompatActivity {
         // like pass back this context to the library
 
 
+    }
+
+    /*
+     * This callback is invoked when the system is about to destroy the Activity.
+     */
+    @Override
+    public void onDestroy() {
+
+        // If the DownloadStateReceiver still exists, unregister it and set it to null
+        if (mBackgroundIntentReceiver != null) {
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(mBackgroundIntentReceiver);
+            mBackgroundIntentReceiver = null;
+        }
+
+        // Must always call the super method at the end.
+        super.onDestroy();
     }
 
     @Override

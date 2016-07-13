@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package parisilabs.com.backgroundintentservice;
+package com.parisilabs.backgroundintentservice;
 
 import android.content.Context;
 import android.content.Intent;
