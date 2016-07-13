@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parisilabs.util.ServiceTools;
+
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -141,6 +143,12 @@ public class MainActivity extends AppCompatActivity {
             // @see http://stackoverflow.com/questions/18794504/intent-setdata-vs-intent-putextra
             // setData(uri) | putExtra(string)
             MainActivity.this.startService(mServiceIntent);
+
+            Boolean isServiceRunning = ServiceTools.isServiceRunning(
+                    MainActivity.this.getApplicationContext(),
+                    BackgroundIntentService.class);
+
+            Log.d(Constants.TAG,String.format("Service:%s running:%b", BackgroundIntentService.class.getName(), isServiceRunning));
 
             return null;
         }

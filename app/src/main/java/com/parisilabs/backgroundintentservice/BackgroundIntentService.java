@@ -46,7 +46,7 @@ public class BackgroundIntentService extends IntentService {
      * background thread.
      */
     public BackgroundIntentService() {
-        super("BackgroundIntentService");
+        super( BackgroundIntentService.class.toString() );
         mBroadcaster = new BroadcastNotifier(this);
     }
 
@@ -56,7 +56,7 @@ public class BackgroundIntentService extends IntentService {
      * background thread.
      */
     public BackgroundIntentService(Context ctx) {
-        super("BackgroundIntentService");
+        super( BackgroundIntentService.class.toString() );
         mBroadcaster = new BroadcastNotifier(ctx);
     }
 
