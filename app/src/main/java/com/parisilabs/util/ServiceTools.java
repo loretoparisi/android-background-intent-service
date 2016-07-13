@@ -19,7 +19,9 @@ public class ServiceTools {
         final List<RunningServiceInfo> services = activityManager.getRunningServices(Integer.MAX_VALUE);
 
         for (RunningServiceInfo runningServiceInfo : services) {
-            Log.d(Constants.TAG, String.format("Service:%s", runningServiceInfo.service.getClassName()));
+            if (Constants.LOGD) {
+                Log.d(Constants.TAG, String.format("Service:%s", runningServiceInfo.service.getClassName()));
+            }
             if (runningServiceInfo.service.getClassName().equals(serviceClass.getName())){
                 return true;
             }
